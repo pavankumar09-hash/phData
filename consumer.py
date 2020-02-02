@@ -1,24 +1,12 @@
-from kafka import KafkaConsumer
-import json
-import logging
-with open("consumer_config.json", "r") as config:
-    data = json.load(config)
-consumerconfig=data["ConsumerConfig"]
-bannedList=consumerconfig["BannedIPList"]
+import findspark
+findspark.init('/home/ithapu_pavankumar/spark/spark-2.4.4-bin-hadoop2.7/')
+from  pyspark import SparkContext
+from pyspark.streaming import StreamingContext
+from pyspark.streaming.kafka import KafkaUtils
+#Create a streaming context with 2 worker threads
+sc = SparkContext("local[4]",appName="DDOSAttackDetector")
+#sc.setLogLevel("WARN")
+ssc = StreamingContext(sc, 1)
 
-#subscribe to botnet_topic
-consumer = KafkaConsumer('botnet_topic',bootstrap_servers='localhost:9092')
-botlog=open("botlog.txt","a")
-for msg in consumer:
- strMessage= msg.value.decode('ascii')
- splitMessage=strMessage.split()
- strIP=splitMessage[0]
+botnetstream=KafkaUtils.createDirectStream(ssc,["botnet_topic"],{"bootstrap_servers":"localhost:9092"})
 
-#Check if the ip is in banned list. Since this is a mock I am pulling it from json otherwise it could
-# be coming from another utility or program that identifies suspicious IP based on an algorithm.
- if strIP in bannedList:
-   print(strIP)
-   botlog.write(strIP+"\n")
-botlog.close()  
-if consumer is not None:
- consumer.close()

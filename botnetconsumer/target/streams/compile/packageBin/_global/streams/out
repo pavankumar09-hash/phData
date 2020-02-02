@@ -1,0 +1,21 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/botnet_2.11-1.0.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/classes[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Consumer$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/classes/Consumer$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Consumer$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/classes/Consumer$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Consumer$$anonfun$5$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/classes/Consumer$$anonfun$5$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Consumer$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/classes/Consumer$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Consumer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/classes/Consumer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Consumer$$anonfun$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/classes/Consumer$$anonfun$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Consumer$$anonfun$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/classes/Consumer$$anonfun$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Consumer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ithapu_pavankumar/phDataProject/botnetconsumer/target/scala-2.11/classes/Consumer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
