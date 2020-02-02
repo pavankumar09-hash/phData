@@ -35,6 +35,9 @@ object Consumer {
 
    //Provide topic of interest. 
    val topics = Array( "botnet_topic")
+   
+   //Define a threshold value to blacklist and log an IP
+   val thresholdVal=30
 
    /*
    **  Create a direct stream by providing the spark streaming context. Stream will subscribe to the topic botnet_topic
@@ -50,21 +53,22 @@ object Consumer {
    val  records=stream.map(_.value)
   
    //Split the records based on the first space. Any record before the first space is an ip in the log record
-   //val  iprecords=records.flatMap(_.split(" "))
     val iprecords=records.map(record=>record.split(" ")(0))
   
-   //Form key,value pairs with value=1. Use reduceByKeyAndwindow
-   // to count the IPS within the specified window 2 minutes and slide interval 10 seconds
+   /*
+   ** Form key,value pairs with value=1. Use reduceByKeyAndwindow
+   **  to count the IPS within the specified window 2 minutes and slide interval 10 seconds
+   */
    val pairrecords=iprecords.map(recordcount => (recordcount,1)).reduceByKeyAndWindow((val1:Int,val2:Int) => (val1+val2),Seconds(120),Seconds(10))
   
-   //pairrecords.print()
-
    //Sort the results
    val sortedrecords=pairrecords.transform(recordrdd=>recordrdd.sortBy(_._2,false))
-   sortedrecords.print()
-
-   sortedrecords.saveAsTextFiles("/home/ithapu_pavankumar/phDataProject/botnetconsumer/logs/")
-
+   
+   val blackListIPs=sortedrecords.map(record=>if(record._2>thresholdVal) record)
+   
+   blackListIPs.print()
+  // pairrecords.saveAsTextFiles("/home/ithapu_pavankumar/phDataProject/botnetconsumer/logs/")
+   blackListIPs.saveAsTextFiles("logs/First","Last")
    ssc.start
    ssc.awaitTermination()
   }

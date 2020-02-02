@@ -1,7 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0m/home/ithapu_pavankumar/phDataProject/botnetconsumer/src/main/scala/Consumer.scala:63:4: not found: value sortedrecords[0m
-[0m[[0m[31merror[0m] [0m[0m   sortedrecords=pairrecords.transform(recordrdd=>recordrdd.sortBy(_._2,false))[0m
-[0m[[0m[31merror[0m] [0m[0m   ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/ithapu_pavankumar/phDataProject/botnetconsumer/src/main/scala/Consumer.scala:64:4: not found: value sortedrecords[0m
-[0m[[0m[31merror[0m] [0m[0m   sortedrecords.print()[0m
-[0m[[0m[31merror[0m] [0m[0m   ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
