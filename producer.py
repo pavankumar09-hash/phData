@@ -4,6 +4,9 @@
 ## After the logs are written into the topic a consumer program written in scala
 ## reads the logs, applies transformations and writes the black listed IPS to 
 ## logs
+## Dtd: 2 Feb 2020
+## Author: Pavan Kumar Ithapu
+## Version: 1.1
 ##
 
 # import kafkaproducer from kafka module

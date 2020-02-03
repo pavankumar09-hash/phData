@@ -3,6 +3,9 @@
 ** This is a consumer program that reads logs from the topic every 2 seconds. A new dstream containing IPs is formed.
 ** Count of IPS is determined based on the window size and a sliding interval. This new dstream is sorted in descending and the first record in  it 
 ** is a most likely a bot. This address is logged into an output file.
+** Dtd: 2 Feb 2020
+** Author: Pavan Kumar Ithapu
+** Version: 1.1
 */
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -12,7 +15,7 @@ import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 import org.apache.spark._
 import org.apache.spark.streaming._
 import org.apache.spark.streaming.StreamingContext
-import org.apache.spark.streaming.StreamingContext._ // not necessary since Spark 1.3
+import org.apache.spark.streaming.StreamingContext._ 
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
@@ -64,12 +67,20 @@ object Consumer {
    //Sort the results
    val sortedrecords=pairrecords.transform(recordrdd=>recordrdd.sortBy(_._2,false))
    
+   //Blacklisted ips are the ips for which ip count is greater than a predetermined threshold value
    val blackListIPs=sortedrecords.map(record=>if(record._2>thresholdVal) record)
    
+   //I am printing it on the screen for demonstration purpose.
    blackListIPs.print()
-  // pairrecords.saveAsTextFiles("/home/ithapu_pavankumar/phDataProject/botnetconsumer/logs/")
+
+   //Save the log files into a folder. Here I created a folder log. The prefix and suffix for
+   //the log files are First and Last
    blackListIPs.saveAsTextFiles("logs/First","Last")
+
+  //Start the streaming process
    ssc.start
+
+   //Wait for a termination interupt Ctrl+c
    ssc.awaitTermination()
   }
 }
